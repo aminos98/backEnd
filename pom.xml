@@ -53,7 +53,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>employeemanager.jar</finalName>
+		<finalName>employeemanager</finalName>
 	</build>
 
 </project>
