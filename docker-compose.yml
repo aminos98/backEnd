@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  # Spring Boot app container
+  spring-app:
+    image: spring-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BACKEND_IMAGE_NAME=spring-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/employeemanager
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: R2#s7P@9q
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: "org.hibernate.dialect.MySQL5Dialect"
+      
+  # MySQL database container
+  mysql-db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: amine
+      MYSQL_DATABASE: employeemanager
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: R2#s7P@9q
+
+  # Angular app container 
+  angular-app:
+    image: angular-app
+    build:
+      context: ../employeemanagerapp
+      # dockerfile: ../employeemanagerapp/Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      API_BASE_URL: http://spring-app:8080
+
+  
+
+    
+  
