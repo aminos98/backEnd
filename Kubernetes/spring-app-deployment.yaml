@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring-app
-        image: ahmedamin1998/spring-app:v3
+        image: ahmedamin1998/myapp:latest
         ports:
         - containerPort: 8080
         env:
