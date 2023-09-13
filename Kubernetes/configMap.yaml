@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: employee-configmap
+data: 
+  API_BASE_URL: spring-service
+  CORS_FILTER: angular-service
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql-service:3306/employeemanager
